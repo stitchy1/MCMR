@@ -1,5 +1,6 @@
 function CSP=data_CSP(A,p,k)
 [a,b]=size(A);
+
 %% 特征提取-JCY
 % % 1 vs 2
 % %EEGSignals.x样本输入
