@@ -1,31 +1,31 @@
 function CSP=data_CSP(A,p,k)
 [a,b]=size(A);
 %% 特征提取-JCY
-% 1 vs 2
-%EEGSignals.x样本输入
-for i=1:b
-    sample_j(:,:,i)=A{1,i}(:,2:9);
-end
-for i=b+1:2*b
-    sample_j(:,:,i)=A{2,i-b}(:,2:9);
-end
-
-%EEGSignals.y标签输入
-for i=1:b
-    label(i)=1;
-end
-for i=b+1:2*b
-    label(i)=0;
-end
-%EEGSignals.s频率输入
-frequency=512;
-%建立结构体
-EEGSignals_j_12 = struct('x',sample_j,'y',label,'s',frequency);
-
-%特征提取
-CSPMatrix_j_12 = learnCSP(EEGSignals_j_12);
-nbFilterPairs=1;
-features_j_12 = extractCSPFeatures(EEGSignals_j_12, CSPMatrix_j_12, nbFilterPairs);
+% % 1 vs 2
+% %EEGSignals.x样本输入
+% for i=1:b
+%     sample_j(:,:,i)=A{1,i}(:,2:9);
+% end
+% for i=b+1:2*b
+%     sample_j(:,:,i)=A{2,i-b}(:,2:9);
+% end
+% 
+% %EEGSignals.y标签输入
+% for i=1:b
+%     label(i)=1;
+% end
+% for i=b+1:2*b
+%     label(i)=0;
+% end
+% %EEGSignals.s频率输入
+% frequency=512;
+% %建立结构体
+% EEGSignals_j_12 = struct('x',sample_j,'y',label,'s',frequency);
+% 
+% %特征提取
+% CSPMatrix_j_12 = learnCSP(EEGSignals_j_12);
+% nbFilterPairs=1;
+% features_j_12 = extractCSPFeatures(EEGSignals_j_12, CSPMatrix_j_12, nbFilterPairs);
 
 %% 特征提取-JCY
 % 1 vs (2 or 3)
@@ -101,26 +101,6 @@ EEGSignals_j_3 = struct('x',sample_j,'y',label,'s',frequency);
 CSPMatrix_j_3 = learnCSP(EEGSignals_j_3);
 nbFilterPairs=k;
 features_j_3 = extractCSPFeatures(EEGSignals_j_3, CSPMatrix_j_3, nbFilterPairs);
-
-%% 特征提取-WWS
-% %EEGSignals.x样本输入
-% for i=1:10
-%     sample_w(:,:,i)=W{1,i}(:,2:12);
-% end
-% for i=11:20
-%     sample_w(:,:,i)=W{2,i-10}(:,2:12);
-% end
-% %EEGSignals.y标签输入
-% label=[1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0];
-% %EEGSignals.x频率输入
-% frequency=1;
-% %建立结构体
-% EEGSignals_w = struct('x',sample_w,'y',label,'s',frequency);
-% 
-% %特征提取
-% CSPMatrix_w = learnCSP(EEGSignals_w);
-% nbFilterPairs=1;
-% features_w = extractCSPFeatures(EEGSignals_w, CSPMatrix_w, nbFilterPairs);
 
 %% SVM-2分类
 % train=features_j_12(6:14,1:2);
