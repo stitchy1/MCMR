@@ -19,5 +19,5 @@ k=1;        %特征值个数为2k
 CSP=data_CSP(data,p,k);
 
 %% illustrate CSP
-m=23;n=22;      %comparison figure of the mth trial in class1 and the nth trial in class2
+m=23;n=22;      %the mth trial 
 illustrateCSP(data,23,22);
